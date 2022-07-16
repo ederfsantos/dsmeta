@@ -11,37 +11,50 @@ import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
 @Service
-	public class SmsService {
+public class SmsService {
 
-		@Value("${twilio.sid}")
-		private String twilioSid;
+	@Value("${twilio.sid}")
+	private String twilioSid;
 
-		@Value("${twilio.key}")
-		private String twilioKey;
+	@Value("${twilio.key}")
+	private String twilioKey;
 
-		@Value("${twilio.phone.from}")
-		private String twilioPhoneFrom;
+	@Value("${twilio.phone.from}")
+	private String twilioPhoneFrom;
 
-		@Value("${twilio.phone.to}")
-		private String twilioPhoneTo;
-		@Autowired
-		private SaleRepository saleRepository;
+	@Value("${twilio.phone.to}")
+	private String twilioPhoneTo;
+	@Autowired
+	private SaleRepository saleRepository;
 
-		public void sendSms(Long saleId) {
-			
-			Sale sale = saleRepository.findById(saleId).get();//pegando a 
-			String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
-			String msg = "O Vendedor " + sale.getSellerName() + " foi destaque em " + date +
-					" com um total de R$ " + String.format("%.2f", sale.getAmount());
+	public void sendSms(Long saleId) {
 
-			Twilio.init(twilioSid, twilioKey);
+		Sale sale = saleRepository.findById(saleId).get();// pegando a
+		String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
+		String msg = "O Vendedor " + sale.getSellerName() + " foi destaque em " + date + " com um total de R$ "
+				+ String.format("%.0f", sale.getAmount());
 
-			PhoneNumber to = new PhoneNumber(twilioPhoneTo);
-			PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
+		Twilio.init(twilioSid, twilioKey);
 
-			Message message = Message.creator(to, from,msg).create();
+		PhoneNumber to = new PhoneNumber(twilioPhoneTo);
+		PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
 
-			System.out.println(message.getSid());
-		}
+		Message message = Message.creator(to, from, msg).create();
+
+		System.out.println(message.getSid());
 	}
 
+	public void sendSmsTeste() {
+
+		String msg = "REALIZANDO TESTE DE MENSAGEM";
+
+		Twilio.init(twilioSid, twilioKey);
+
+		PhoneNumber to = new PhoneNumber(twilioPhoneTo);
+		PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
+
+		Message message = Message.creator(to, from, msg).create();
+
+		System.out.println(message.getSid());
+	}
+}

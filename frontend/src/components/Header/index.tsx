@@ -8,7 +8,7 @@ function Header() {
                 <h1>DSMeta</h1>
                 <p>
                     Desenvolvido por
-                    <a href="https://github.com/ederfsantos">@ederfsantos na Semana Spring React da DevSuperior professor Nélio Alves edição julho 2022</a>
+                    <a href="https://github.com/ederfsantos">@ederfsantos na Semana Spring React da DevSuperior professor Nelio Alves edição julho 2022</a>
                     
                     
                 </p>

@@ -32,5 +32,10 @@ public class SaleController {
 	public void notifySms(@PathVariable Long id) {
 		smsService.sendSms(id);
 	}
+	
+	@GetMapping("/notification")
+	public void notifySmsTeste() {
+		smsService.sendSmsTeste();
+	}
 
 }
