@@ -46,7 +46,9 @@ public class SmsService {
 
 	public void sendSmsTeste() {
 
-		String msg = "REALIZANDO TESTE DE MENSAGEM";
+		//String msg = "REALIZANDO TESTE DE MENSAGEM";
+		String msg = "A semana Spring React da DevSuperior foi show de bola!!!"
+				+ " Valeu Professor Nelio pelo conteúdo!";
 
 		Twilio.init(twilioSid, twilioKey);
 
