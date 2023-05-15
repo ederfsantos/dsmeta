@@ -13,16 +13,16 @@ import com.twilio.type.PhoneNumber;
 @Service
 public class SmsService {
 
-	@Value("${twilio.sid}")
+	//@Value("${twilio.sid}")
 	private String twilioSid;
 
-	@Value("${twilio.key}")
+	//@Value("${twilio.key}")
 	private String twilioKey;
 
-	@Value("${twilio.phone.from}")
+	//@Value("${twilio.phone.from}")
 	private String twilioPhoneFrom;
 
-	@Value("${twilio.phone.to}")
+	//@Value("${twilio.phone.to}")
 	private String twilioPhoneTo;
 	@Autowired
 	private SaleRepository saleRepository;
